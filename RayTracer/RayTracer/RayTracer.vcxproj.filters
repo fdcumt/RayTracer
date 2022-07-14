@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{162beb1a-b837-4321-ad58-3c380cc127ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Vector">
+      <UniqueIdentifier>{6d632221-5800-430c-b5c2-ccc8d4826bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Ray">
+      <UniqueIdentifier>{19a03ef7-9d43-4d6b-963f-93b6c20eee7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Hit">
+      <UniqueIdentifier>{5731fc43-d6b6-448a-8906-ed86311a9092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Shape">
+      <UniqueIdentifier>{6d1f2477-2386-4c57-aec4-e57595feb637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math">
+      <UniqueIdentifier>{9c7327ab-5eda-4788-9a92-78d7c6a0c839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{d3bdcac9-9007-4334-9726-cb70cf1ce304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common">
+      <UniqueIdentifier>{c6658dcc-c0d3-4e47-afb0-a4bdd8a81645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Material">
+      <UniqueIdentifier>{5f905135-142a-44cc-81db-20def6056411}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector\Vector.cpp">
+      <Filter>Source\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Ray\Ray.cpp">
+      <Filter>Source\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hit\BaseHit.cpp">
+      <Filter>Source\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shape\Sphere.cpp">
+      <Filter>Source\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hit\HitTableList.cpp">
+      <Filter>Source\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Math\MathUtility.cpp">
+      <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\Camera.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\Material.cpp">
+      <Filter>Source\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\Lambertain.cpp">
+      <Filter>Source\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\Metal.cpp">
+      <Filter>Source\Material</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Main.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector\Vector.h">
+      <Filter>Source\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Ray\Ray.h">
+      <Filter>Source\Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hit\BaseHit.h">
+      <Filter>Source\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shape\Sphere.h">
+      <Filter>Source\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hit\HitTableList.h">
+      <Filter>Source\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Math\MathUtility.h">
+      <Filter>Source\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\Camera.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\CommonDefine.h">
+      <Filter>Source\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\Material.h">
+      <Filter>Source\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\Lambertain.h">
+      <Filter>Source\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\Metal.h">
+      <Filter>Source\Material</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

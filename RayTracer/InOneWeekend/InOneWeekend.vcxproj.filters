@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{49d9d9cf-bc83-4b48-97b9-6e168b9d2b11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\aabb.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\camera.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\color.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\hittable.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\hittable_list.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\material.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\perlin.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ray.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\rtw_stb_image.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\rtweekend.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sphere.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\texture.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\vec3.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\main.cc">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
