@@ -18,6 +18,11 @@ const FVector FVector::RightVector(0.f, 1.f, 0.f);
 
 const FVector FVector::LeftVector(0.f, -1.f, 0.f);
 
+double FVector::Size() const
+{
+	return FMath::Sqrt(SizeSquare());
+}
+
 bool FVector::IsNormalized() const
 {
 	return FMath::Abs(SizeSquare()-1) < THRESH_VECTOR_NORMALIZED;

@@ -6,7 +6,8 @@
 class FMetal : public IMaterial
 {
 public:
-	FMetal(const FVector& InAlbedo) : Albedo(InAlbedo)
+	FMetal(const FVector& InAlbedo, double InFuzzy)
+		: Albedo(InAlbedo), Fuzzy(InFuzzy)
 	{
 
 	}
@@ -15,5 +16,6 @@ public:
 
 public:
 	FVector Albedo; // 反射率
+	double Fuzzy; // 粗糙, 模糊
 };
 

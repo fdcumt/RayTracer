@@ -28,7 +28,7 @@ FVector RayColor(const FRay &Ray, const FHitTableList &InHitTableList, int InDep
 		FVector Attenuation;
 		if (ClosetHitRecord.Mat->Scatter(Ray, ClosetHitRecord, Attenuation, Scattered))
 		{
-			return RayColor(Scattered, InHitTableList, InDepth-1);
+			return Attenuation*RayColor(Scattered, InHitTableList, InDepth-1);
 		}
 
 		return FVector::ZeroVector;
@@ -55,8 +55,8 @@ int main()
 	FHitTableList WorldObjectList;
 	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, 0.f, -1.f), 0.5, std::make_shared<FLambertain>(FVector(0.7, 0.3, 0.3))));
 	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, -100.5f, -1.f), 100.f, std::make_shared<FLambertain>(FVector(0.8, 0.8, 0))));
-	WorldObjectList.Add(std::make_shared<FSphere>(FVector(1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.6, 0.2))));
-	WorldObjectList.Add(std::make_shared<FSphere>(FVector(-1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.8, 0.8))));
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.6, 0.2), 0.3)));
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(-1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.8, 0.8), 1.0)));
 	
 	for (int j = image_height - 1; j >= 0; --j) 
 	{

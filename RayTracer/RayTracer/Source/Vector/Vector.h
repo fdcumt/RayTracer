@@ -136,10 +136,7 @@ public:
 		return X*X + Y*Y + Z*Z;
 	}
 
-	double Size() const
-	{
-		return FMath::Sqrt(SizeSquare());
-	}
+	double Size() const;
 
 	static double DotProduct (const FVector& A, const FVector &B)
 	{
