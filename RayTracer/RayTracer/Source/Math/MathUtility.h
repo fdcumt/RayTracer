@@ -14,6 +14,8 @@ public:
 
 	static double Clamp(double X, double Min, double Max) { return X<=Min ? Min : (X>=Max ? Max:X); }
 
+	static double DegreesToRadians(double InDegrees) { return InDegrees*M_PI/180.f; }
+
 	static double Cos(double Radian);
 	static float Cosf(float Radian);
 	static double ACos(double Radian);
@@ -34,11 +36,15 @@ public:
 
 	static double Pow(double Base, double Exp);
 
+	static double Min(double A, double B) { return A<=B ? A:B;}
+	static double Max(double A, double B) { return A >= B ? A : B; }
+
 	template< class T >
 	static T Abs(const T A)
 	{
 		return (A >= (T)0) ? A : -A;
 	}
+
 
 };
 

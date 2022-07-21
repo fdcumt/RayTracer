@@ -10,6 +10,7 @@
 #include "Material/Material.h"
 #include "Material/Lambertain.h"
 #include "Material/Metal.h"
+#include "Material/Dielectric.h"
 
 // 右手坐标系, Y轴向上.
 
@@ -50,13 +51,30 @@ int main()
 
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-	FCamera Camera;
+	FVector LookFromPoint(-2, 2, 1);
+	//FVector LookFromPoint(0, 0, 0);
+	FVector LookAtPoint(0, 0, -1);
+	FVector UpDir(0, 1, 0);
+	FCamera Camera(LookFromPoint, LookAtPoint, UpDir, 20, image_width/image_height);
+
+	auto MaterialSmallBall = std::make_shared<FLambertian>(FVector(0.7, 0.3, 0.3));
+	auto MaterialBigBall = std::make_shared<FLambertian>(FVector(0.8, 0.8, 0));
+	auto MaterialLeft = std::make_shared<FMetal>(FVector(0.8, 0.6, 0.2), 0.3);
+	auto MaterialDielectric = std::make_shared<FDielectric>(1.5);
+
+	double R = FMath::Cos(FMath::M_PI/4);
 
 	FHitTableList WorldObjectList;
-	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, 0.f, -1.f), 0.5, std::make_shared<FLambertain>(FVector(0.7, 0.3, 0.3))));
-	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, -100.5f, -1.f), 100.f, std::make_shared<FLambertain>(FVector(0.8, 0.8, 0))));
+	//WorldObjectList.Add(std::make_shared<FSphere>(FVector(-R, 0.f, -1.f), R, std::make_shared<FLambertian>(FVector(0, 0, 1))));
+	//WorldObjectList.Add(std::make_shared<FSphere>(FVector(R, 0.f, -1.f), R, std::make_shared<FLambertian>(FVector(1, 0, 0))));
+
+
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, 0.f, -1.f), 0.5, std::make_shared<FLambertian>(FVector(0.1, 0.2, 0.5))));
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(0.f, -100.5f, -1.f), 100.f, std::make_shared<FLambertian>(FVector(0.8, 0.8, 0))));
+	
 	WorldObjectList.Add(std::make_shared<FSphere>(FVector(1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.6, 0.2), 0.3)));
-	WorldObjectList.Add(std::make_shared<FSphere>(FVector(-1, 0, -1), 0.5, std::make_shared<FMetal>(FVector(0.8, 0.8, 0.8), 1.0)));
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(-1, 0, -1), 0.5, MaterialDielectric));
+	WorldObjectList.Add(std::make_shared<FSphere>(FVector(-1, 0, -1), -0.45, MaterialDielectric));
 	
 	for (int j = image_height - 1; j >= 0; --j) 
 	{

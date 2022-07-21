@@ -160,11 +160,16 @@ public:
 
 	bool IsNormalized() const;
 
+	// 反射
 	static FVector Reflect(const FVector& InRayDirection, const FVector& InNormal)
 	{
 		Checkf(InNormal.IsNormalized(), "InNormal is not normalize");
 		return InRayDirection-2*DotProduct(InRayDirection, InNormal)*InNormal;
 	}
+
+	// 折射, return is normal vector
+	// InIndexOfRefractionReciprocal: 折射率的倒数
+	static FVector Refraction(const FVector& InRayDirection, const FVector& InNormal, double InIndexOfRefractionReciprocal);
 
 	void WriteColor(int SamplePerPixel) const;
 

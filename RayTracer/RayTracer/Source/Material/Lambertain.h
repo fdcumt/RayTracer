@@ -2,11 +2,11 @@
 #include "Material.h"
 #include "Vector/Vector.h"
 
-
-class FLambertain : public IMaterial
+// 漫反射
+class FLambertian : public IMaterial
 {
 public:
-	FLambertain(const FVector& InAlbedo) : Albedo(InAlbedo)
+	FLambertian(const FVector& InAlbedo) : Albedo(InAlbedo)
 	{
 
 	}

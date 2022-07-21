@@ -1,12 +1,15 @@
 #include "MathUtility.h"
 #include <cstdlib>
 #include <cmath>
+#include <time.h>
+#include <stdlib.h>
 
 const double FMath::M_PI = 3.14159265358979323846f;
 
 double FMath::Random()
 {
-	return std::rand() / (RAND_MAX+1.f);
+	//srand((unsigned)time(NULL));
+	return  std::rand() / (RAND_MAX);
 }
 
 double FMath::Cos(double Radian)

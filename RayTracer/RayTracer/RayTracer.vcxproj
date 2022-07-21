@@ -145,6 +145,7 @@
     <ClCompile Include="Source\Hit\BaseHit.cpp" />
     <ClCompile Include="Source\Hit\HitTableList.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Material\Dielectric.cpp" />
     <ClCompile Include="Source\Material\Lambertain.cpp" />
     <ClCompile Include="Source\Material\Material.cpp" />
     <ClCompile Include="Source\Material\Metal.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Source\Hit\BaseHit.h" />
     <ClInclude Include="Source\Hit\HitTableList.h" />
     <ClInclude Include="Source\Main.h" />
+    <ClInclude Include="Source\Material\Dielectric.h" />
     <ClInclude Include="Source\Material\Lambertain.h" />
     <ClInclude Include="Source\Material\Material.h" />
     <ClInclude Include="Source\Material\Metal.h" />

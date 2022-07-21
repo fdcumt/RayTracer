@@ -28,6 +28,17 @@ bool FVector::IsNormalized() const
 	return FMath::Abs(SizeSquare()-1) < THRESH_VECTOR_NORMALIZED;
 }
 
+FVector FVector::Refraction(const FVector& InRayDirection, const FVector& InNormal, double InIndexOfRefractionReciprocal)
+{
+	const FVector RayDirectionNoraml = InRayDirection.Normal();
+	const FVector CurNormal = InNormal.Normal();
+
+	double CosDelta = FVector::DotProduct(-RayDirectionNoraml, CurNormal);
+	FVector Out_Parallel = InIndexOfRefractionReciprocal * (RayDirectionNoraml + CosDelta * CurNormal);
+	FVector Out_Perp = -FMath::Sqrt(1.0 - Out_Parallel.SizeSquare()) * CurNormal;
+	return Out_Parallel+Out_Perp;
+}
+
 void FVector::WriteColor(int SamplePerPixel) const
 {
 	double R = FMath::Pow(X / SamplePerPixel, 0.45);

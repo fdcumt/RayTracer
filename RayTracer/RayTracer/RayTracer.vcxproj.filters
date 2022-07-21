@@ -71,6 +71,9 @@
     <ClCompile Include="Source\Material\Metal.cpp">
       <Filter>Source\Material</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Material\Dielectric.cpp">
+      <Filter>Source\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Main.h">
@@ -107,6 +110,9 @@
       <Filter>Source\Material</Filter>
     </ClInclude>
     <ClInclude Include="Source\Material\Metal.h">
+      <Filter>Source\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\Dielectric.h">
       <Filter>Source\Material</Filter>
     </ClInclude>
   </ItemGroup>
