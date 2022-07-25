@@ -12,7 +12,7 @@ struct FHitRecord
 	FVector HitPoint;
 	FVector Normal;
 	double t;
-	bool bFrontFace; // 正面朝向, 我们定义, 法线方向永远和入射光线方向相反
+	bool bFrontFace; 
 	const IHitTable *HitObj = nullptr;
 	std::shared_ptr<IMaterial> Mat;
 	void SetFaceNormal(const FRay &InRay, const FVector &OutwardNormal);

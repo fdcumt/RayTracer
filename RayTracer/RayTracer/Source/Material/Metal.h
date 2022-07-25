@@ -15,7 +15,7 @@ public:
 	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const;
 
 public:
-	FVector Albedo; // 反射率
-	double Fuzzy; // 粗糙, 模糊
+	FVector Albedo; 
+	double Fuzzy;
 };
 

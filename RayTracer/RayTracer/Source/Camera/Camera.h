@@ -17,12 +17,12 @@ public:
 		m_ApertureRadius = InAperture/2;
 		m_FoucsDistance = InFoucsDistance;
 
-		// 方向是正方向
+		//
 		//m_LookAtDir = (InLookAtPoint-InLookFromPoint).Normal();
 		//m_RightDir = FVector::CrossProduct(m_LookAtDir, InUp).Normal();
 		//m_UpDir = FVector::CrossProduct(m_RightDir, m_LookAtDir).Normal();
 
-		// 方向是负方向
+		//
 		m_LookAtDir = (InLookFromPoint-InLookAtPoint).Normal();
 		m_RightDir = FVector::CrossProduct(InUp, m_LookAtDir).Normal();
 		m_UpDir = FVector::CrossProduct(m_LookAtDir, m_RightDir).Normal();
@@ -53,6 +53,6 @@ protected:
 	double m_FoucsDistance;
 
 	double m_Fov; // top 2 bottom in degrees
-	double m_Aspect; // 宽/高
+	double m_Aspect; //
 };
 

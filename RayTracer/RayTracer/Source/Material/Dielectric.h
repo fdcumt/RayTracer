@@ -19,7 +19,7 @@ protected:
 	static double SchlickApproximate(double CosTheta, double InIndexOfRefractionReciprocal);
 
 protected:
-	double m_IndexOfRefraction; // 折射率
+	double m_IndexOfRefraction;
 };
 
 

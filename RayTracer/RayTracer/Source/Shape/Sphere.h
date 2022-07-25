@@ -29,10 +29,8 @@ public:
 	
 	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const override; 
 	
-	// 球内随机一点, bInclueSphereSurface:是否包含球表面上点
 	FVector RandomPointInSphere(const bool bInclueSphereSurface = true) const;
 
-	// 球面随机一点
 	FVector RandomPointOnSphereSurface() const;
 
 	FVector RandomPointInHemisphere(const FVector & InNormal, const bool bInclueSphereSurface = true) const;

@@ -12,7 +12,7 @@
 #include "Material/Metal.h"
 #include "Material/Dielectric.h"
 
-// 右手坐标系, Y轴向上.
+// 中文
 
 FVector RayColor(const FRay &Ray, const FHitTableList &InHitTableList, int InDepth)
 {
