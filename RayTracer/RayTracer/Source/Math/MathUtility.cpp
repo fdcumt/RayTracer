@@ -9,7 +9,7 @@ const double FMath::M_PI = 3.14159265358979323846f;
 double FMath::Random()
 {
 	//srand((unsigned)time(NULL));
-	return  std::rand() / (RAND_MAX);
+	return  double(std::rand()) / (RAND_MAX);
 }
 
 double FMath::Cos(double Radian)

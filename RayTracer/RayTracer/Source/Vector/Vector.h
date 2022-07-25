@@ -138,6 +138,8 @@ public:
 
 	double Size() const;
 
+	double Distance() const { return Size(); }
+
 	static double DotProduct (const FVector& A, const FVector &B)
 	{
 		return A.X*B.X+A.Y*B.Y+A.Z*B.Z;
@@ -157,6 +159,10 @@ public:
 	{
 		return *this/Size();
 	}
+
+	static FVector Random();
+	static FVector Random(double InMin, double InMax);
+
 
 	bool IsNormalized() const;
 
@@ -178,6 +184,7 @@ public:
 		return InValue * Scale;
 	}
 
+	static FVector RandomVector2DInUnitDisk();
 };
 
 inline std::ostream& operator << (std::ostream& Out, const FVector& V)

@@ -6,12 +6,16 @@
 class FCamera
 {
 public:
-	FCamera(const FVector &InLookFromPoint, const FVector &InLookAtPoint, const FVector &InUp, double InFov, double InAspect)
+	FCamera(const FVector &InLookFromPoint, const FVector &InLookAtPoint, const FVector &InUp, 
+		double InFov, double InAspect, double InAperture, double InFoucsDistance)
 	{
 		m_Fov = InFov;
 		m_Aspect = InAspect;
 
 		m_Origin = InLookFromPoint;
+
+		m_ApertureRadius = InAperture/2;
+		m_FoucsDistance = InFoucsDistance;
 
 		// 方向是正方向
 		//m_LookAtDir = (InLookAtPoint-InLookFromPoint).Normal();
@@ -27,9 +31,10 @@ public:
 		double HalfHeight = FMath::Tan(theta/2);
 		double HalfWidth = m_Aspect*HalfHeight;
 
-		m_LowerLeftCorner = m_Origin-HalfHeight*m_UpDir-HalfWidth*m_RightDir-m_LookAtDir;
-		m_Horizontial = m_RightDir*HalfWidth*2;
-		m_Vertical = m_UpDir*HalfHeight*2;
+		m_LowerLeftCorner = m_Origin-HalfHeight*m_FoucsDistance*m_UpDir-HalfWidth* m_FoucsDistance*m_RightDir-m_LookAtDir*m_FoucsDistance;
+
+		m_Horizontial = m_RightDir*HalfWidth*2* m_FoucsDistance;
+		m_Vertical = m_UpDir*HalfHeight*2* m_FoucsDistance;
 	}
 
 	FRay GetRay(double U, double V);
@@ -43,6 +48,9 @@ protected:
 	FVector m_LowerLeftCorner;
 	FVector m_Horizontial;
 	FVector m_Vertical;
+
+	double m_ApertureRadius;
+	double m_FoucsDistance;
 
 	double m_Fov; // top 2 bottom in degrees
 	double m_Aspect; // 宽/高
