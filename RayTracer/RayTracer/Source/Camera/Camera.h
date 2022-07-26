@@ -7,7 +7,7 @@ class FCamera
 {
 public:
 	FCamera(const FVector &InLookFromPoint, const FVector &InLookAtPoint, const FVector &InUp, 
-		double InFov, double InAspect, double InAperture, double InFoucsDistance)
+		double InFov, double InAspect, double InAperture, double InFoucsDistance, double InBeginTime, double InEndTime)
 	{
 		m_Fov = InFov;
 		m_Aspect = InAspect;
@@ -35,6 +35,9 @@ public:
 
 		m_Horizontial = m_RightDir*HalfWidth*2* m_FoucsDistance;
 		m_Vertical = m_UpDir*HalfHeight*2* m_FoucsDistance;
+
+		m_BeginTime = InBeginTime;
+		m_EndTime = InEndTime;
 	}
 
 	FRay GetRay(double U, double V);
@@ -54,5 +57,8 @@ protected:
 
 	double m_Fov; // top 2 bottom in degrees
 	double m_Aspect; //
+
+	double m_BeginTime = 0;
+	double m_EndTime = 0;
 };
 

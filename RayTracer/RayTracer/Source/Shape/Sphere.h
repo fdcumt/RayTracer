@@ -8,7 +8,7 @@ public:
 	FSphere(std::shared_ptr<IMaterial> InMat)
 		: Radius(0.f), Center(FVector::ZeroVector), Mat(InMat)
 	{
-
+		
 	}
 
 	FSphere(double InRadius, std::shared_ptr<IMaterial> InMat)

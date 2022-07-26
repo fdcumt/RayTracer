@@ -11,6 +11,7 @@
 #include "Material/Lambertain.h"
 #include "Material/Metal.h"
 #include "Material/Dielectric.h"
+#include "Shape/MovingSphere.h"
 
 // 中文
 
@@ -57,9 +58,10 @@ FHitTableList RandomScene()
 			if ((Center-FVector(4, 0.2, 0)).Size()>0.9)
 			{
 				if (ChooseMat<0.8)
-				{
+				{ // diffuse
 					FVector albedo = FVector::Random()*FVector::Random();
-					World.Add(std::make_shared<FSphere>(Center, 0.2, std::make_shared<FLambertian>(albedo)));
+					FVector Center2 = Center+FVector(0, FMath::Random(0, 0.5), 0);
+					World.Add(std::make_shared<FMovingSphere>(Center, Center2, 0, 1, 0.2, std::make_shared<FLambertian>(albedo)));
 				}
 				else if (ChooseMat < 0.95)
 				{
@@ -85,9 +87,9 @@ FHitTableList RandomScene()
 int main() 
 {
 	const double AspectRatio = 16/9;
-	const int image_width = 1200;
+	const int image_width = 400;
 	const int image_height = static_cast<int>(image_width*AspectRatio);
-	int SamplePerPixel = 10;
+	int SamplePerPixel = 4;
 	int MaxDepth = 50;
 
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
@@ -99,7 +101,10 @@ int main()
 
 	double Aperture = 0.1;
 	double FoucsDis = 10;
-	FCamera Camera(LookFromPoint, LookAtPoint, UpDir, 20, image_width/image_height, Aperture, FoucsDis);
+	FCamera Camera(LookFromPoint, LookAtPoint, UpDir, 
+					20, image_width/image_height, 
+					Aperture, FoucsDis,
+					0, 1);
 
 	// auto MaterialSmallBall = std::make_shared<FLambertian>(FVector(0.7, 0.3, 0.3));
 	// auto MaterialBigBall = std::make_shared<FLambertian>(FVector(0.8, 0.8, 0));

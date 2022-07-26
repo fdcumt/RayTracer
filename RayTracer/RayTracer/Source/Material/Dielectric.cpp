@@ -17,12 +17,12 @@ bool FDielectric::Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVec
 	if (IndexOfRefractionReciprocal*SinTheta>=1 || FMath::Random()<ReflectProp)
 	{
 		FVector ReflectDir = FVector::Reflect(RayDirectionNormal, HitNormal);
-		OutScattered = FRay(InHitRecord.HitPoint, ReflectDir);
+		OutScattered = FRay(InHitRecord.HitPoint, ReflectDir, InRay.GetTime());
 	}
 	else
 	{
 		FVector RefractionDir = FVector::Refraction(RayDirectionNormal, HitNormal, IndexOfRefractionReciprocal);
-		OutScattered = FRay(InHitRecord.HitPoint, RefractionDir);
+		OutScattered = FRay(InHitRecord.HitPoint, RefractionDir, InRay.GetTime());
 	}
 
 	return true;

@@ -74,6 +74,9 @@
     <ClCompile Include="Source\Material\Dielectric.cpp">
       <Filter>Source\Material</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Shape\MovingSphere.cpp">
+      <Filter>Source\Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Main.h">
@@ -114,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="Source\Material\Dielectric.h">
       <Filter>Source\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shape\MovingSphere.h">
+      <Filter>Source\Shape</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

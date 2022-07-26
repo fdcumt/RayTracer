@@ -9,6 +9,8 @@ FRay FCamera::GetRay(double U, double V)
 	FVector RandomOffset = m_ApertureRadius * FVector::RandomVector2DInUnitDisk();
 	RandomOffset = m_UpDir*RandomOffset.X + m_RightDir*RandomOffset.Y;
 
-	return FRay(m_Origin+RandomOffset, m_LowerLeftCorner + U * m_Horizontial + V * m_Vertical-m_Origin-RandomOffset);
+	return FRay(m_Origin+RandomOffset, 
+		m_LowerLeftCorner + U * m_Horizontial + V * m_Vertical-m_Origin-RandomOffset,
+		FMath::Random(m_BeginTime, m_EndTime));
 }
 
