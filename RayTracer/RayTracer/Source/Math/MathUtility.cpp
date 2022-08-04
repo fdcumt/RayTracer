@@ -3,6 +3,7 @@
 #include <cmath>
 #include <time.h>
 #include <stdlib.h>
+#include <algorithm>
 
 const double FMath::M_PI = 3.14159265358979323846f;
 
@@ -10,6 +11,11 @@ double FMath::Random()
 {
 	//srand((unsigned)time(NULL));
 	return  double(std::rand()) / (RAND_MAX);
+}
+
+int FMath::RandomInt(int InMin, int InMax)
+{
+	return std::rand()%(InMax-InMin)+InMin;
 }
 
 double FMath::Cos(double Radian)
@@ -85,5 +91,12 @@ double FMath::Sqrt(double Radian)
 double FMath::Pow(double Base, double Exp)
 {
 	return std::pow(Base, Exp);
+}
+
+void FMath::Swap(double& A, double& B)
+{
+	double Temp = A;
+	A = B;
+	B = Temp;
 }
 

@@ -12,6 +12,9 @@ public:
 	// return [min, max]
 	static double Random(double InMin, double InMax) { return Random()*(InMax-InMin) +InMin; }
 
+	static int RandomInt(int InMin, int InMax);
+
+
 	static double Clamp(double X, double Min, double Max) { return X<=Min ? Min : (X>=Max ? Max:X); }
 
 	static double DegreesToRadians(double InDegrees) { return InDegrees*M_PI/180.f; }
@@ -44,6 +47,8 @@ public:
 	{
 		return (A >= (T)0) ? A : -A;
 	}
+
+	static void Swap(double &A, double &B);
 
 
 };

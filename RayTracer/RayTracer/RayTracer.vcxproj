@@ -118,7 +118,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/uft-8</AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\BVH\BVH.cpp" />
     <ClCompile Include="Source\Camera\Camera.cpp" />
     <ClCompile Include="Source\Hit\BaseHit.cpp" />
     <ClCompile Include="Source\Hit\HitTableList.cpp" />
@@ -152,11 +154,14 @@
     <ClCompile Include="Source\Material\Metal.cpp" />
     <ClCompile Include="Source\Math\MathUtility.cpp" />
     <ClCompile Include="Source\Ray\Ray.cpp" />
+    <ClCompile Include="Source\Shape\AABB.cpp" />
     <ClCompile Include="Source\Shape\MovingSphere.cpp" />
     <ClCompile Include="Source\Shape\Sphere.cpp" />
+    <ClCompile Include="Source\Texture\Texture.cpp" />
     <ClCompile Include="Source\Vector\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\BVH\BVH.h" />
     <ClInclude Include="Source\Camera\Camera.h" />
     <ClInclude Include="Source\Common\CommonDefine.h" />
     <ClInclude Include="Source\Hit\BaseHit.h" />
@@ -168,8 +173,10 @@
     <ClInclude Include="Source\Material\Metal.h" />
     <ClInclude Include="Source\Math\MathUtility.h" />
     <ClInclude Include="Source\Ray\Ray.h" />
+    <ClInclude Include="Source\Shape\AABB.h" />
     <ClInclude Include="Source\Shape\MovingSphere.h" />
     <ClInclude Include="Source\Shape\Sphere.h" />
+    <ClInclude Include="Source\Texture\Texture.h" />
     <ClInclude Include="Source\Vector\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

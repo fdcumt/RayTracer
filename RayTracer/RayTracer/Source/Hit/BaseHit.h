@@ -2,6 +2,7 @@
 #include "../Vector/Vector.h"
 #include "../Ray/Ray.h"
 #include <memory>
+#include "Shape/AABB.h"
 
 extern const double infinity;
 class IHitTable;
@@ -22,7 +23,9 @@ class IHitTable
 {
 public:
 	virtual bool Hit(const FRay &InRay, double MinT, double MaxT, FHitRecord &OutHitRecord) const = 0 ;
-	virtual bool CheckIsPointInner(const FVector &InPoint) const = 0;
+	virtual bool CheckIsPointInner(const FVector &InPoint) const { return false; }
+
+	virtual bool BoundingBox(double InTime0, double InTime1, FAABB &OutBox) const = 0;
 };
 
 

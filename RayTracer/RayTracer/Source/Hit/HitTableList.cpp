@@ -38,6 +38,35 @@ bool FHitTableList::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord&
 	return bHitAnything;
 }
 
+bool FHitTableList::BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const
+{
+	int ObjNum = static_cast<int>(ObjectList.size());
+	if (ObjNum>0)
+	{
+		if (!ObjectList[0]->BoundingBox(InTime0, InTime1, OutBox))
+		{
+			return false;
+		}
+
+		for (int i=1; i<ObjNum; ++i)
+		{
+			FAABB Box;
+			if (!ObjectList[i]->BoundingBox(InTime0, InTime1, Box))
+			{
+				return false;
+			}
+
+			OutBox = FAABB::SurroundingBox(OutBox, Box);
+		}
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 bool FHitTableList::CheckIsPointInner(const FVector& InPoint) const
 {
 	for (std::shared_ptr<IHitTable> HitObject : ObjectList)

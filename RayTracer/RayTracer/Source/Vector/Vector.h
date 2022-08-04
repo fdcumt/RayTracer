@@ -56,6 +56,12 @@ public:
 		return *this;
 	}
 
+	double operator [] (const int Index)
+	{
+		double *p = &X;
+		return p[Index];
+	}
+
 	FVector& operator -= (const FVector& InOther)
 	{
 		X -= InOther.X;
@@ -102,6 +108,11 @@ public:
 	}
 
 	FVector operator + (const int& Other) const
+	{
+		return FVector(X + Other, Y + Other, Z + Other);
+	}
+
+	FVector operator + (const double& Other) const
 	{
 		return FVector(X + Other, Y + Other, Z + Other);
 	}
@@ -182,6 +193,11 @@ public:
 	friend FVector operator *(double Scale, const FVector& InValue)
 	{
 		return InValue * Scale;
+	}
+
+	friend bool operator==(const FVector& InLeftValue, const FVector& InRightValue)
+	{
+		return InLeftValue.X==InRightValue.X && InLeftValue.Y == InRightValue.Y && InLeftValue.Z == InRightValue.Z;
 	}
 
 	static FVector RandomVector2DInUnitDisk();

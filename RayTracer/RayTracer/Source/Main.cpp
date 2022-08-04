@@ -12,6 +12,7 @@
 #include "Material/Metal.h"
 #include "Material/Dielectric.h"
 #include "Shape/MovingSphere.h"
+#include "BVH/BVH.h"
 
 // 中文
 
@@ -49,29 +50,35 @@ FHitTableList RandomScene()
 
 	World.Add(std::make_shared<FSphere>(FVector(0, -1000, 0), 1000, std::make_shared<FLambertian>(FVector(0.5, 0.5, 0.5))));
 
-	for (int a = -11; a<11; ++a)
+	int ItemNum = 0;
+	int BeginIndex = -11;
+
+	for (int a = BeginIndex; a<11; ++a)
 	{
-		for (int b = -11; b<11; ++b)
+		for (int b = BeginIndex; b<11; ++b)
 		{
 			double ChooseMat = FMath::Random();
 			FVector Center(a+0.9*FMath::Random(), 0.2, b+0.9*FMath::Random());
 			if ((Center-FVector(4, 0.2, 0)).Size()>0.9)
 			{
-				if (ChooseMat<0.8)
+				if (ChooseMat<0.5)
 				{ // diffuse
 					FVector albedo = FVector::Random()*FVector::Random();
 					FVector Center2 = Center+FVector(0, FMath::Random(0, 0.5), 0);
 					World.Add(std::make_shared<FMovingSphere>(Center, Center2, 0, 1, 0.2, std::make_shared<FLambertian>(albedo)));
+					++ItemNum;
 				}
 				else if (ChooseMat < 0.95)
 				{
 					FVector albedo = FVector::Random(0.5, 1);
 					double Fuzz = FMath::Random(0, 0.5);
 					World.Add(std::make_shared<FSphere>(Center, 0.2, std::make_shared<FMetal>(albedo, Fuzz)));
+					++ItemNum;
 				}
 				else
 				{
 					World.Add(std::make_shared<FSphere>(Center, 0.2, std::make_shared<FDielectric>(1.5)));
+					++ItemNum;
 				}
 			}
 		}
@@ -81,15 +88,18 @@ FHitTableList RandomScene()
 	World.Add(std::make_shared<FSphere>(FVector(-4,1,0), 1.0, std::make_shared<FLambertian>(FVector(0.4, 0.2, 0.1))));
 	World.Add(std::make_shared<FSphere>(FVector(4,1,0), 1.0, std::make_shared<FMetal>(FVector(0.7, 0.6, 0.5), 0.0)));
 
-	return World;
+	FHitTableList RetWorld;
+	RetWorld.Add(std::make_shared<FBVH>(World, 0, 1));
+	//return World;
+	return RetWorld;
 }
 
 int main() 
 {
-	const double AspectRatio = 16/9;
+	const double AspectRatio = 16.0/9.0;
 	const int image_width = 400;
-	const int image_height = static_cast<int>(image_width*AspectRatio);
-	int SamplePerPixel = 4;
+	const int image_height = static_cast<int>(image_width/AspectRatio);
+	int SamplePerPixel = 100;
 	int MaxDepth = 50;
 
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
@@ -99,8 +109,8 @@ int main()
 	FVector LookAtPoint(0, 0, 0);
 	FVector UpDir(0, 1, 0);
 
-	double Aperture = 0.1;
-	double FoucsDis = 10;
+	double Aperture = 0;
+	double FoucsDis = 1;
 	FCamera Camera(LookFromPoint, LookAtPoint, UpDir, 
 					20, image_width/image_height, 
 					Aperture, FoucsDis,

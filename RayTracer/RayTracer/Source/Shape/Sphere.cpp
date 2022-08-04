@@ -9,10 +9,10 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
 {
 	//Checkf(!IsPointInSphere(InRay.GetOriginal()), "point can`t in sphere");
 
-    FVector OC = InRay.GetOriginal()-Center;
+    FVector OC = InRay.GetOriginal()-m_Center;
     double a = InRay.GetDirection().SizeSquare();
     double half_b = FVector::DotProduct(InRay.GetDirection(),OC);
-    double c = OC.SizeSquare() - Radius*Radius;
+    double c = OC.SizeSquare() - m_Radius*m_Radius;
     double Discriminant = half_b*half_b -a*c;
 
     if (Discriminant>0)
@@ -27,10 +27,10 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
         {
             OutHitRecord.t = NearlyT;
             OutHitRecord.HitPoint = InRay.At(NearlyT);
-            double DisSquare = (OutHitRecord.HitPoint-Center).SizeSquare();
+            double DisSquare = (OutHitRecord.HitPoint-m_Center).SizeSquare();
 			//Checkf(DisSquare==Radius*Radius, "point can`t in sphere");
 
-            FVector OutwardNormal = (OutHitRecord.HitPoint-Center)/Radius;
+            FVector OutwardNormal = (OutHitRecord.HitPoint-m_Center)/m_Radius;
             OutHitRecord.SetFaceNormal(InRay, OutwardNormal);
 			OutHitRecord.HitObj = this;
             OutHitRecord.Mat = Mat;
@@ -44,7 +44,7 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
 			OutHitRecord.HitPoint = InRay.At(FarT);
 			//Checkf(!IsPointInSphere(OutHitRecord.HitPoint), "point can`t in sphere");
 
-			FVector OutwardNormal = (OutHitRecord.HitPoint - Center) / Radius;
+			FVector OutwardNormal = (OutHitRecord.HitPoint - m_Center) / m_Radius;
             //Checkf(OutwardNormal.IsNormal(), "OutwardNormal is not normal");
 			OutHitRecord.SetFaceNormal(InRay, OutwardNormal);
 			OutHitRecord.HitObj = this;
@@ -57,27 +57,33 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
     return false;
 }
 
+bool FSphere::BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const
+{
+    OutBox = FAABB(m_Center-m_Radius*2, m_Center+m_Radius*2);
+    return true;
+}
+
 FVector FSphere::RandomPointInSphere(const bool bInclueSphereSurface /*= true*/) const
 {
     double RandomRadius = 0;
 
     if (bInclueSphereSurface)
     {
-        RandomRadius = FMath::Random(0, Radius);
+        RandomRadius = FMath::Random(0, m_Radius);
     }
     else
     {
 		do {
-            RandomRadius = FMath::Random(0, Radius);
-		} while (RandomRadius == Radius);
+            RandomRadius = FMath::Random(0, m_Radius);
+		} while (RandomRadius == m_Radius);
     }
 
-	return RandomPointOnOriginalUnitSphereSurface() * RandomRadius + Center;
+	return RandomPointOnOriginalUnitSphereSurface() * RandomRadius + m_Center;
 }
 
 FVector FSphere::RandomPointOnSphereSurface() const
 {
-	return RandomPointOnOriginalUnitSphereSurface()*Radius+Center;
+	return RandomPointOnOriginalUnitSphereSurface()*m_Radius+m_Center;
 }
 
 FVector FSphere::RandomPointInHemisphere(const FVector& InNormal, const bool bInclueSphereSurface /*= true*/) const
@@ -93,8 +99,8 @@ FVector FSphere::RandomPointInHemisphere(const FVector& InNormal, const bool bIn
     if (!bInclueSphereSurface)
     {
         do {
-			RandomRadius = FMath::Random(0, Radius);
-        } while (RandomRadius==Radius);
+			RandomRadius = FMath::Random(0, m_Radius);
+        } while (RandomRadius==m_Radius);
     }
 
     return RandomPoint*RandomRadius;
@@ -143,7 +149,7 @@ FVector FSphere::RandomPointOnOriginalUnitSphereSurface()
 
 bool FSphere::IsPointInSphere(const FVector& InPoint) const
 {
-    return (InPoint-Center).SizeSquare()<(Radius*Radius);
+    return (InPoint-m_Center).SizeSquare()<(m_Radius*m_Radius);
 }
 
 

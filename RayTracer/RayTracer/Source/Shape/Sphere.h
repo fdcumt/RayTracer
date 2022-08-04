@@ -6,28 +6,32 @@ class FSphere : public IHitTable
 {
 public:
 	FSphere(std::shared_ptr<IMaterial> InMat)
-		: Radius(0.f), Center(FVector::ZeroVector), Mat(InMat)
+		: m_Radius(0.f), m_Center(FVector::ZeroVector), Mat(InMat)
 	{
 		
 	}
 
 	FSphere(double InRadius, std::shared_ptr<IMaterial> InMat)
-		: Radius(InRadius), Center(FVector::ZeroVector), Mat(InMat)
+		: m_Radius(InRadius), m_Center(FVector::ZeroVector), Mat(InMat)
 	{
 
 	}
 
 
 	FSphere(const FVector &InCenter, const double InRadius, std::shared_ptr<IMaterial> InMat)
-		: Radius(InRadius), Center(InCenter), Mat(InMat)
+		: m_Radius(InRadius), m_Center(InCenter), Mat(InMat)
 	{
 		
 	}
 
-	double GetRadius() const { return Radius; }
-	FVector GetCenter() const { return Center; }
-	
-	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const override; 
+public:
+	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const override;
+	virtual bool BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const override;
+
+
+public:
+	double GetRadius() const { return m_Radius; }
+	FVector GetCenter() const { return m_Center; }
 	
 	FVector RandomPointInSphere(const bool bInclueSphereSurface = true) const;
 
@@ -47,8 +51,8 @@ public:
 
 
 protected:
-	double Radius;
-	FVector Center;
+	double m_Radius;
+	FVector m_Center;
 
 	std::shared_ptr<IMaterial> Mat;
 };

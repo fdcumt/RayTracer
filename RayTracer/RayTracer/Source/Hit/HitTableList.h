@@ -15,9 +15,13 @@ public:
 		ObjectList.push_back(InObject);
 	}
 
+	std::vector<std::shared_ptr<IHitTable>>& GetObjectList() { return ObjectList; }
+
 	void Remove(std::shared_ptr<IHitTable> InObject);
 
-	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const;
+	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const override;
+	virtual bool BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const override;
+
 
 	virtual bool CheckIsPointInner(const FVector& InPoint) const;
 

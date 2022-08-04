@@ -36,6 +36,12 @@
     <Filter Include="Source\Material">
       <UniqueIdentifier>{5f905135-142a-44cc-81db-20def6056411}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\BVH">
+      <UniqueIdentifier>{6ccf37c1-5d94-4115-9fa8-c425483b067f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Texture">
+      <UniqueIdentifier>{2188a468-74dc-42e4-9e2c-0fe0f3a12469}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -76,6 +82,15 @@
     </ClCompile>
     <ClCompile Include="Source\Shape\MovingSphere.cpp">
       <Filter>Source\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shape\AABB.cpp">
+      <Filter>Source\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BVH\BVH.cpp">
+      <Filter>Source\BVH</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Texture\Texture.cpp">
+      <Filter>Source\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +135,15 @@
     </ClInclude>
     <ClInclude Include="Source\Shape\MovingSphere.h">
       <Filter>Source\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shape\AABB.h">
+      <Filter>Source\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BVH\BVH.h">
+      <Filter>Source\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Texture\Texture.h">
+      <Filter>Source\Texture</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

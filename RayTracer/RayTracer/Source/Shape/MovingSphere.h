@@ -17,10 +17,12 @@ public:
 
 	FVector GetCenter(double InTime) const
 	{
-		return FSphere::GetCenter() + (InTime-m_BeginTime)/(m_BeginTime-m_EndTime)*(m_EndCenter-FSphere::GetCenter());
+		return FSphere::GetCenter() + (InTime-m_BeginTime)/(m_EndTime - m_BeginTime)*(m_EndCenter-FSphere::GetCenter());
 	}
 
+public:
 	virtual bool Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHitRecord) const override;
+	virtual bool BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const override;
 
 
 protected:
