@@ -23,6 +23,12 @@ double FVector::Size() const
 	return FMath::Sqrt(SizeSquare());
 }
 
+bool FVector::IsNearZero() const
+{
+	const double S = 1e-8;
+	return FMath::Abs(X)<S && FMath::Abs(Y)<S && FMath::Abs(Z)<S;
+}
+
 FVector FVector::Random()
 {
 	return FVector(FMath::Random(), FMath::Random(), FMath::Random());

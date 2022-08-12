@@ -78,6 +78,11 @@ float FMath::Atanf(float Radian)
 	return std::atanf(Radian);
 }
 
+double FMath::Atan2(double InY, double InX)
+{
+	return std::atan2(InY, InX);
+}
+
 float FMath::Sqrt(float Radian)
 {
 	return std::sqrt(Radian);
@@ -91,6 +96,11 @@ double FMath::Sqrt(double Radian)
 double FMath::Pow(double Base, double Exp)
 {
 	return std::pow(Base, Exp);
+}
+
+double FMath::Floor(double Base)
+{
+	return std::floor(Base);
 }
 
 void FMath::Swap(double& A, double& B)

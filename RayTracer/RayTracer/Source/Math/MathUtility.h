@@ -33,11 +33,14 @@ public:
 	static float Tanf(float Radian);
 	static double Atan(double Radian);
 	static float Atanf(float Radian);
+	static double Atan2(double InY, double InX);
 
 	static double Sqrt(double Radian);
 	static float Sqrt(float Radian);
 
 	static double Pow(double Base, double Exp);
+
+	static double Floor(double Base);
 
 	static double Min(double A, double B) { return A<=B ? A:B;}
 	static double Max(double A, double B) { return A >= B ? A : B; }
@@ -49,6 +52,15 @@ public:
 	}
 
 	static void Swap(double &A, double &B);
+
+	template< class T >
+	static void Swap(T &A, T &B)
+	{
+		T Temp;
+		Temp = A;
+		A = B;
+		B = Temp;
+	}
 
 
 };

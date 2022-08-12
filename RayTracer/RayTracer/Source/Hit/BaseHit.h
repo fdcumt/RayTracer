@@ -12,7 +12,12 @@ struct FHitRecord
 {
 	FVector HitPoint;
 	FVector Normal;
-	double t;
+	double t; // for ray trace
+
+	// u,v coordinates
+	double U;
+	double V;
+
 	bool bFrontFace; 
 	const IHitTable *HitObj = nullptr;
 	std::shared_ptr<IMaterial> Mat;

@@ -1,9 +1,10 @@
 #pragma once
+#include "Common/Color.h"
+#include "Vector/Vector.h"
 
-class FTexture
+
+class ITexture
 {
 public:
-
-protected:
-
+	virtual FColor Value(double InU, double InV, const FVector& InPoint) const = 0;
 };

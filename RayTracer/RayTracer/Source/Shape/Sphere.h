@@ -32,6 +32,10 @@ public:
 public:
 	double GetRadius() const { return m_Radius; }
 	FVector GetCenter() const { return m_Center; }
+
+	// calculate u,v by given point on unit sphere which origin point is zero
+	static void GetSphereUV(const FVector &InPoint, double &OutU, double OutV);
+
 	
 	FVector RandomPointInSphere(const bool bInclueSphereSurface = true) const;
 

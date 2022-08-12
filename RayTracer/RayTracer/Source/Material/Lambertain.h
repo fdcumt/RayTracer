@@ -1,18 +1,27 @@
 #pragma once
 #include "Material.h"
 #include "Vector/Vector.h"
+#include "Texture/Texture.h"
+#include "Texture/SolidColor.h"
 
 class FLambertian : public IMaterial
 {
 public:
-	FLambertian(const FVector& InAlbedo) : Albedo(InAlbedo)
+	FLambertian(const FColor& InColor) : Albedo(std::make_shared<FSolidColor>(InColor))
 	{
 
 	}
 
+	FLambertian(std::shared_ptr<ITexture> InTexture) : Albedo(InTexture)
+	{
+
+	}
+
+
+	// 传播
 	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const override;
 
 public:
-	FVector Albedo;
+	std::shared_ptr<ITexture> Albedo; // 反射率
 };
 

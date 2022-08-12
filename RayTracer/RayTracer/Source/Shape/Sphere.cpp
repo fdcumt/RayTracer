@@ -23,25 +23,16 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
         double NearlyT = (-half_b-root) / a;
         double FarT = (-half_b + root) / a;
 
-        if (NearlyT > MinT && NearlyT < MaxT)
+        double FinalValue = NearlyT;
+        if (FinalValue < MinT || FinalValue > MaxT)
         {
-            OutHitRecord.t = NearlyT;
-            OutHitRecord.HitPoint = InRay.At(NearlyT);
-            double DisSquare = (OutHitRecord.HitPoint-m_Center).SizeSquare();
-			//Checkf(DisSquare==Radius*Radius, "point can`t in sphere");
-
-            FVector OutwardNormal = (OutHitRecord.HitPoint-m_Center)/m_Radius;
-            OutHitRecord.SetFaceNormal(InRay, OutwardNormal);
-			OutHitRecord.HitObj = this;
-            OutHitRecord.Mat = Mat;
-
-            return true;
+            FinalValue = FarT;
         }
 
-		if (FarT > MinT && FarT < MaxT)
+		if (FinalValue >= MinT && FinalValue <= MaxT)
 		{
-			OutHitRecord.t = FarT;
-			OutHitRecord.HitPoint = InRay.At(FarT);
+			OutHitRecord.t = FinalValue;
+			OutHitRecord.HitPoint = InRay.At(FinalValue);
 			//Checkf(!IsPointInSphere(OutHitRecord.HitPoint), "point can`t in sphere");
 
 			FVector OutwardNormal = (OutHitRecord.HitPoint - m_Center) / m_Radius;
@@ -49,6 +40,7 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
 			OutHitRecord.SetFaceNormal(InRay, OutwardNormal);
 			OutHitRecord.HitObj = this;
 			OutHitRecord.Mat = Mat;
+            GetSphereUV(OutHitRecord.HitPoint, OutHitRecord.U, OutHitRecord.V);
 
 			return true;
 		}
@@ -61,6 +53,15 @@ bool FSphere::BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const
 {
     OutBox = FAABB(m_Center-m_Radius*2, m_Center+m_Radius*2);
     return true;
+}
+
+void FSphere::GetSphereUV(const FVector& InPoint, double& OutU, double OutV)
+{
+    // Point:the given point is on the unit sphere which center is zero
+    double theta = FMath::ACos(-InPoint.Y);
+    double phi = FMath::Atan2(-InPoint.Z, InPoint.X)+FMath::M_PI;
+    OutU = phi/(2*FMath::M_PI);
+    OutV = theta/FMath::M_PI;
 }
 
 FVector FSphere::RandomPointInSphere(const bool bInclueSphereSurface /*= true*/) const

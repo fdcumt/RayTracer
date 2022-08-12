@@ -142,6 +142,7 @@ public:
 		return FVector(X / InValue, Y / InValue, Z / InValue);
 	}
 
+public:
 	double SizeSquare() const
 	{
 		return X*X + Y*Y + Z*Z;
@@ -170,6 +171,9 @@ public:
 	{
 		return *this/Size();
 	}
+
+	bool IsNearZero() const;
+
 
 	static FVector Random();
 	static FVector Random(double InMin, double InMax);

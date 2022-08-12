@@ -5,8 +5,9 @@ bool FLambertian::Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVec
 {
 	FVector ScatterDirection = FSphere::RandomPointOnOriginalUnitSphereSurface();
 	OutScattered = FRay(InHitRecord.HitPoint, ScatterDirection, InRay.GetTime());
-	OutAttenuation = Albedo;
+	OutAttenuation = Albedo->Value(InHitRecord.U, InHitRecord.V, InHitRecord.HitPoint).GetVector();
 
 	return true;
 }
+
 
