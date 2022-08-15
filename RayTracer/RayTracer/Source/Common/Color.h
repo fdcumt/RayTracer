@@ -4,6 +4,21 @@
 class FColor
 {
 public:
+	static const FColor White;
+	static const FColor Black;
+	static const FColor Red;
+	static const FColor Green;
+	static const FColor Blue;
+	static const FColor Yellow;
+	static const FColor Cyan;
+	static const FColor Magenta;
+	static const FColor Orange;
+	static const FColor Purple;
+	static const FColor Turquoise;
+	static const FColor Silver;
+	static const FColor Emerald;
+
+public:
 	double R = 0;
 	double G = 0;
 	double B = 0;
@@ -14,10 +29,16 @@ public:
 
 	}
 
+	FColor(int InR, int InG, int InB)
+		: R(double(InR)/255), G(double(InG)/255), B(double(InB)/255)
+	{
+
+	}
+
 	FColor(double InR, double InG, double InB)
 		: R(InR), G(InG), B(InB)
 	{
-
+		
 	}
 
 	FColor(const FVector &InVector)

@@ -45,6 +45,9 @@
     <Filter Include="Source\PerlinNoise">
       <UniqueIdentifier>{aac69b16-d4a1-46c8-bb57-3f6094d8e277}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\StbImage">
+      <UniqueIdentifier>{bac0af26-859f-4e01-afc2-e4475e378898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -106,6 +109,15 @@
     </ClCompile>
     <ClCompile Include="Source\Texture\NoiseTexture.cpp">
       <Filter>Source\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Texture\ImageTexture.cpp">
+      <Filter>Source\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\Color.cpp">
+      <Filter>Source\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StbImage\RTW_StbImage.cpp">
+      <Filter>Source\StbImage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +186,15 @@
     </ClInclude>
     <ClInclude Include="Source\Texture\NoiseTexture.h">
       <Filter>Source\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StbImage\RTW_StbImage.h">
+      <Filter>Source\StbImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Texture\ImageTexture.h">
+      <Filter>Source\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StbImage\stb_image.h">
+      <Filter>Source\StbImage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

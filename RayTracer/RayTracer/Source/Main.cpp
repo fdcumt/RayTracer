@@ -15,6 +15,7 @@
 #include "BVH/BVH.h"
 #include "Texture/CheckerTexture.h"
 #include "Texture/NoiseTexture.h"
+#include "Texture/ImageTexture.h"
 
 // 中文
 
@@ -123,6 +124,30 @@ FHitTableList TwoPerlinNoiseSphere()
 }
 
 
+FHitTableList Earth()
+{
+	FHitTableList Objects;
+#if _DEBUG
+	const char* ImagePath = "./Images/earthmap.jpg"; // for debug
+#else
+	const char* ImagePath = "../../RayTracer/Images/earthmap.jpg"; // for cmd
+#endif
+	auto EarthTexture = std::make_shared<FImageTexture>(ImagePath);
+	//auto PerlinNoiseTexture = std::make_shared<FCheckerTexture>(FColor(0.2, 0.3, 0.1), FColor(0.9, 0.9, 0.9));
+
+	Objects.Add(std::make_shared<FSphere>(FVector(0, 0, 0), 2, std::make_shared<FLambertian>(EarthTexture)));
+
+	return Objects;
+}
+
+enum class EObjectListType
+{
+	eWorld,
+	eTwoSphere,
+	eTwoPerlinNoiseSphere,
+	eEarth,
+};
+
 int main() 
 {
 	const double AspectRatio = double(16)/9;
@@ -146,9 +171,10 @@ int main()
 	double R = FMath::Cos(FMath::M_PI / 4);
 
 	FHitTableList WorldObjectList;
-	switch (2)
+	EObjectListType eType = EObjectListType::eEarth;
+	switch (eType)
 	{
-	case 0:
+	case EObjectListType::eWorld:
 	{ // render world
 		WorldObjectList = RandomScene();
 		LookFromPoint = FVector(13, 2, 3);
@@ -158,7 +184,7 @@ int main()
 		break;
 	}
 
-	case 1:
+	case EObjectListType::eTwoSphere:
 	{// render two sphere
 		WorldObjectList = TwoSphere();
 		LookFromPoint = FVector(13, 2, 3);
@@ -167,9 +193,18 @@ int main()
 		break;
 	}
 
-	case 2:
+	case EObjectListType::eTwoPerlinNoiseSphere:
 	{// 
 		WorldObjectList = TwoPerlinNoiseSphere();
+		LookFromPoint = FVector(13, 2, 3);
+		LookAtPoint = (0, 0, 0);
+		Fov = 20;
+		break;
+	}
+
+	case EObjectListType::eEarth:
+	{// 
+		WorldObjectList = Earth();
 		LookFromPoint = FVector(13, 2, 3);
 		LookAtPoint = (0, 0, 0);
 		Fov = 20;

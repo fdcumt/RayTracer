@@ -40,7 +40,7 @@ bool FSphere::Hit(const FRay& InRay, double MinT, double MaxT, FHitRecord& OutHi
 			OutHitRecord.SetFaceNormal(InRay, OutwardNormal);
 			OutHitRecord.HitObj = this;
 			OutHitRecord.Mat = Mat;
-            GetSphereUV(OutHitRecord.HitPoint, OutHitRecord.U, OutHitRecord.V);
+            GetSphereUV(OutwardNormal, OutHitRecord.U, OutHitRecord.V);
 
 			return true;
 		}
@@ -55,7 +55,7 @@ bool FSphere::BoundingBox(double InTime0, double InTime1, FAABB& OutBox) const
     return true;
 }
 
-void FSphere::GetSphereUV(const FVector& InPoint, double& OutU, double OutV)
+void FSphere::GetSphereUV(const FVector& InPoint, double& OutU, double &OutV)
 {
     // Point:the given point is on the unit sphere which center is zero
     double theta = FMath::ACos(-InPoint.Y);

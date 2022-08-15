@@ -134,6 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="Source\BVH\BVH.cpp" />
     <ClCompile Include="Source\Camera\Camera.cpp" />
+    <ClCompile Include="Source\Common\Color.cpp" />
     <ClCompile Include="Source\Hit\BaseHit.cpp" />
     <ClCompile Include="Source\Hit\HitTableList.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -158,7 +160,9 @@
     <ClCompile Include="Source\Shape\AABB.cpp" />
     <ClCompile Include="Source\Shape\MovingSphere.cpp" />
     <ClCompile Include="Source\Shape\Sphere.cpp" />
+    <ClCompile Include="Source\StbImage\RTW_StbImage.cpp" />
     <ClCompile Include="Source\Texture\CheckerTexture.cpp" />
+    <ClCompile Include="Source\Texture\ImageTexture.cpp" />
     <ClCompile Include="Source\Texture\NoiseTexture.cpp" />
     <ClCompile Include="Source\Texture\SolidColor.cpp" />
     <ClCompile Include="Source\Texture\Texture.cpp" />
@@ -182,7 +186,10 @@
     <ClInclude Include="Source\Shape\AABB.h" />
     <ClInclude Include="Source\Shape\MovingSphere.h" />
     <ClInclude Include="Source\Shape\Sphere.h" />
+    <ClInclude Include="Source\StbImage\RTW_StbImage.h" />
+    <ClInclude Include="Source\StbImage\stb_image.h" />
     <ClInclude Include="Source\Texture\CheckerTexture.h" />
+    <ClInclude Include="Source\Texture\ImageTexture.h" />
     <ClInclude Include="Source\Texture\NoiseTexture.h" />
     <ClInclude Include="Source\Texture\SolidColor.h" />
     <ClInclude Include="Source\Texture\Texture.h" />
