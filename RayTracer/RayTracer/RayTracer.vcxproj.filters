@@ -119,6 +119,12 @@
     <ClCompile Include="Source\StbImage\RTW_StbImage.cpp">
       <Filter>Source\StbImage</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Material\DiffuseLight.cpp">
+      <Filter>Source\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shape\Rectangle.cpp">
+      <Filter>Source\Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Main.h">
@@ -195,6 +201,12 @@
     </ClInclude>
     <ClInclude Include="Source\StbImage\stb_image.h">
       <Filter>Source\StbImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\DiffuseLight.h">
+      <Filter>Source\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shape\Rectangle.h">
+      <Filter>Source\Shape</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

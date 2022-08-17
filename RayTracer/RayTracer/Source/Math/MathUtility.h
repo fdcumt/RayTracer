@@ -62,6 +62,10 @@ public:
 		B = Temp;
 	}
 
-
+	template< class T >
+	static bool IsInRange(const T &A, const T &Min, const T &Max)
+	{
+		return A>=Min && A<=Max;
+	}
 };
 

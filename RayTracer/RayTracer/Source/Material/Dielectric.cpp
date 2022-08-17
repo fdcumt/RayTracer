@@ -1,7 +1,7 @@
 #include "Dielectric.h"
 #include "Math/MathUtility.h"
 
-bool FDielectric::Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const
+bool FDielectric::Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FColor& OutAttenuation, FRay& OutScattered) const
 {
 	double IndexOfRefractionReciprocal = InHitRecord.bFrontFace ? (1/m_IndexOfRefraction) : m_IndexOfRefraction;
 
@@ -11,7 +11,7 @@ bool FDielectric::Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVec
 	double CosTheta = FMath::Min(FMath::Abs(FVector::DotProduct(-RayDirectionNormal, HitNormal)), 1);
 	double SinTheta = FMath::Sqrt(1- CosTheta* CosTheta);
 
-	OutAttenuation = FVector::OneVector;
+	OutAttenuation = FColor::White;
 
 	double ReflectProp = SchlickApproximate(CosTheta, IndexOfRefractionReciprocal);
 	if (IndexOfRefractionReciprocal*SinTheta>=1 || FMath::Random()<ReflectProp)

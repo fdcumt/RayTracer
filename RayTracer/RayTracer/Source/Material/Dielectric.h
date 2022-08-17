@@ -12,7 +12,7 @@ public:
 
 	}
 
-	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const override;
+	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FColor& OutAttenuation, FRay& OutScattered) const override;
 
 protected:
 	// use schlick`s approximate for refraction

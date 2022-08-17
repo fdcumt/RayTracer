@@ -19,7 +19,7 @@ public:
 
 
 	// 传播
-	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const override;
+	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FColor& OutAttenuation, FRay& OutScattered) const override;
 
 public:
 	std::shared_ptr<ITexture> Albedo; // 反射率

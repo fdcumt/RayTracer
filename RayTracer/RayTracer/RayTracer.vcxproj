@@ -151,6 +151,7 @@
     <ClCompile Include="Source\Hit\HitTableList.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Material\Dielectric.cpp" />
+    <ClCompile Include="Source\Material\DiffuseLight.cpp" />
     <ClCompile Include="Source\Material\Lambertain.cpp" />
     <ClCompile Include="Source\Material\Material.cpp" />
     <ClCompile Include="Source\Material\Metal.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Source\Ray\Ray.cpp" />
     <ClCompile Include="Source\Shape\AABB.cpp" />
     <ClCompile Include="Source\Shape\MovingSphere.cpp" />
+    <ClCompile Include="Source\Shape\Rectangle.cpp" />
     <ClCompile Include="Source\Shape\Sphere.cpp" />
     <ClCompile Include="Source\StbImage\RTW_StbImage.cpp" />
     <ClCompile Include="Source\Texture\CheckerTexture.cpp" />
@@ -177,6 +179,7 @@
     <ClInclude Include="Source\Hit\HitTableList.h" />
     <ClInclude Include="Source\Main.h" />
     <ClInclude Include="Source\Material\Dielectric.h" />
+    <ClInclude Include="Source\Material\DiffuseLight.h" />
     <ClInclude Include="Source\Material\Lambertain.h" />
     <ClInclude Include="Source\Material\Material.h" />
     <ClInclude Include="Source\Material\Metal.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="Source\Ray\Ray.h" />
     <ClInclude Include="Source\Shape\AABB.h" />
     <ClInclude Include="Source\Shape\MovingSphere.h" />
+    <ClInclude Include="Source\Shape\Rectangle.h" />
     <ClInclude Include="Source\Shape\Sphere.h" />
     <ClInclude Include="Source\StbImage\RTW_StbImage.h" />
     <ClInclude Include="Source\StbImage\stb_image.h" />

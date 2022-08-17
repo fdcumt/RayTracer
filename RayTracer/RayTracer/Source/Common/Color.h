@@ -29,12 +29,6 @@ public:
 
 	}
 
-	FColor(int InR, int InG, int InB)
-		: R(double(InR)/255), G(double(InG)/255), B(double(InB)/255)
-	{
-
-	}
-
 	FColor(double InR, double InG, double InB)
 		: R(InR), G(InG), B(InB)
 	{
@@ -58,6 +52,32 @@ public:
 		return FVector(R, G, B);
 	}
 
+	void WriteColor(int SamplePerPixel) const;
+
+	static FColor Random();
+	static FColor Random(double InMin, double InMax);
+
+	bool IsGrayScale() const {
+		return R==B && B==G;
+	}
+
+	const char* ToString() const;
+
+public:
+	FColor& operator+=(const FColor& Other)
+	{
+		R += Other.R;
+		G += Other.G;
+		B += Other.B;
+		return *this;
+	}
+
+public:
+	friend FColor operator+(const FColor& InColorA, const FColor & InColorB)
+	{
+		return FColor(InColorA.R+InColorB.R, InColorA.B+InColorB.B, InColorA.G+InColorB.G);
+	}
+
 	friend FColor operator*(const FColor &InColor, double InValue)
 	{
 		return FColor(InColor.R*InValue, InColor.B*InValue, InColor.G*InValue);
@@ -66,6 +86,11 @@ public:
 	friend FColor operator*(double InValue, const FColor& InColor)
 	{
 		return InColor*InValue;
+	}
+
+	friend FColor operator*(const FColor &A, const FColor&B)
+	{
+		return FColor(A.R * B.R, A.B * B.B, A.G * B.G);
 	}
 
 };

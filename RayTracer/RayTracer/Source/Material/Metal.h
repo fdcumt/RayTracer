@@ -6,16 +6,16 @@
 class FMetal : public IMaterial
 {
 public:
-	FMetal(const FVector& InAlbedo, double InFuzzy)
+	FMetal(const FColor& InAlbedo, double InFuzzy)
 		: Albedo(InAlbedo), Fuzzy(InFuzzy)
 	{
 
 	}
 
-	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FVector& OutAttenuation, FRay& OutScattered) const;
+	virtual bool Scatter(const FRay& InRay, const FHitRecord& InHitRecord, FColor& OutAttenuation, FRay& OutScattered) const;
 
 public:
-	FVector Albedo; 
+	FColor Albedo; 
 	double Fuzzy;
 };
 
